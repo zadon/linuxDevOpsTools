@@ -42,4 +42,10 @@
     1. Ссылки на репозитории и доступы в сервисы инфраструктуры
     1. Слайды с описанием проекта
 
-1. Ответы на вопросы.
+2. Ответы на вопросы.
+
+
+Ссылка:
+
+curl https://raw.githubusercontent.com/zadon/linuxDevOpsTools/main/pre-install.sh -o pre-install.sh && chmod +x pre-install.sh && ./pre-install.sh
+
