@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ super() }}
+<div class="column is-4 is-offset-4">
+<h3 class="title">Upload new File</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method=post enctype=multipart/form-data>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type=file name=file>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-block is-info is-large is-fullwidth" type=submit value=Upload>Upload</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
