@@ -3,9 +3,14 @@
   become: true
 
   tasks:
-    - name: Install Docker from repository 
+    - name: Install Docker from repository
       apt:
        name: docker
+       state: present
+
+    - name: Install Docker from repository 
+      apt:
+       name: docker.io
        state: present
 
     - name: Install pip3 package
@@ -24,5 +29,5 @@
         build: 
           path: ./nginx-docker
         name: nginx
-        tag: v2
+        tag: v1
         source: build 
