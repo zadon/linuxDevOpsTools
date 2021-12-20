@@ -31,3 +31,33 @@
         name: nginx
         tag: v1
         source: build 
+
+    - name: Build Flask Docker container 
+      community.docker.docker_image:
+        build: 
+          path: ./app
+        name: flask
+        tag: v1
+        source: build 
+    - name: Create a network
+      community.docker.docker_network:
+        name: flask
+    
+    - name: Run Flask
+      docker_container:
+         name: flask
+         image: flask:v1 
+         state: started
+         exposed_ports: 5000
+         networks:
+           - name: flask
+    
+    - name: Run Nginx
+      docker_container:
+         name: nginx
+         image: nginx:v2 
+         state: started
+         published_ports: "80:80"
+         exposed_ports: 80
+         networks:
+           - name: flask
