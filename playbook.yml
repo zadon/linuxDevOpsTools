@@ -3,14 +3,16 @@
   become: true
 
   tasks:
-    - name: install packages to allow apt to use a repository over HTTPS
-      apt: name={{ item }} state=latest update_cache=yes
-      loop: ['ca-certificates', 'curl', 'gnupg', 'lsb-release']
-
     - name: Add Docker GPG apt Key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
+
+    - name: Install pip3 package
+      package:
+        update_cache: yes 
+        name: python3-pip
+        state: latest
 
     - name: Add Docker Repository
       apt_repository:
@@ -19,5 +21,9 @@
 
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
-
-
+    
+    - name: Install Docker SDK for Python
+      pip:
+       name: docker
+       executable: pip3
+    
