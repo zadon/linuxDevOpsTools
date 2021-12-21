@@ -49,3 +49,6 @@
 
 curl https://raw.githubusercontent.com/zadon/linuxDevOpsTools/main/pre-install.sh -o pre-install.sh && chmod +x pre-install.sh && ./pre-install.sh
 
+git clone git@github.com:zadon/linuxDevOpsTools.git
+
+ansible-playbook ./linuxDevOpsTools/playbook.yml
