@@ -1,7 +1,7 @@
 set -x
 sudo apt-get update -y
 sudo apt-get install -y ansible git
-sudo ansible-galaxy collection install community.docker
+ansible-galaxy collection install community.docker
 ssh-keygen -t rsa -f ~/.ssh/id_rsa -C "zadon@yandex.ru"
 cat ~/.ssh/id_rsa.pub
 git config --global user.name "Zadonsky Alexander"
