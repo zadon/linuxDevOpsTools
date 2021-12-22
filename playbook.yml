@@ -39,14 +39,24 @@
         name: flask
         tag: v1
         source: build 
+
     - name: Create a network
       community.docker.docker_network:
         name: flask
     
-    - name: Run Flask
+    - name: Run Flask1
       docker_container:
-         name: flask
+         name: flask1
          image: flask:v1 
+         state: started
+         exposed_ports: 5000
+         networks:
+           - name: flask
+
+    - name: Run Flask2
+      docker_container:
+         name: flask2
+         image: flask:v1
          state: started
          exposed_ports: 5000
          networks:
